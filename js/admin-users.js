@@ -1,4 +1,4 @@
-import { auth, db, firebaseConfig } from './firebase-config.js';
+import { auth, db, app } from './firebase-config.js';
 import { initializeApp, getApps, getApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
 import {
   getAuth, createUserWithEmailAndPassword, deleteUser, signOut,
@@ -41,8 +41,8 @@ const th = (text, cls = '') => el('th', { class: cls, scope: 'col', text });
 
 /* ---------- Secondary app (অ্যাডমিনের সেশন অক্ষুণ্ণ রাখতে) ---------- */
 async function getSecondaryAuth() {
-  const app = getApps().find((a) => a.name === 'secondary') || initializeApp(firebaseConfig, 'secondary');
-  const sAuth = getAuth(app);
+  const secondary = getApps().find((a) => a.name === 'secondary') || initializeApp(app.options, 'secondary');
+  const sAuth = getAuth(secondary);
   await setPersistence(sAuth, inMemoryPersistence);
   return sAuth;
 }
