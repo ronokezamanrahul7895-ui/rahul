@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>লগইন | SubTrack Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="pageLoader" class="page-loader" role="status" aria-live="polite">
+    <span class="spinner spinner-dark spinner-lg"></span>
+    <span>অপেক্ষা করুন...</span>
+  </div>
+
+  <main class="auth-page">
+    <section class="auth-hero" aria-hidden="true">
+      <div class="auth-brand">
+        <div class="brand-logo">S</div>
+        <div>
+          <div class="brand-name">SubTrack Pro</div>
+          <div class="brand-sub">সাবক্রিপশন ম্যানেজমেন্ট ড্যাশবোর্ড</div>
+        </div>
+      </div>
+
+      <div>
+        <h2>গ্রাহক, বিল ও আয়-ব্যয়ের<br>সবকিছু এক জায়গায়</h2>
+        <p>অফিসের অভ্যন্তরীণ ব্যবহারের জন্য নিরাপদ ও দ্রুত সাবক্রিপশন ম্যানেজমেন্ট সিস্টেম।</p>
+        <ul class="feature-list">
+          <li><span class="feature-dot">✓</span><span>কাস্টমার এন্ট্রি ও অনুমোদন ব্যবস্থাপনা</span></li>
+          <li><span class="feature-dot">✓</span><span>মাসিক রিসিট, পেমেন্ট ও প্রিন্ট</span></li>
+          <li><span class="feature-dot">✓</span><span>আয়, ডিউ, খরচ ও লাভ-ক্ষতির অ্যানালিটিক্স</span></li>
+        </ul>
+      </div>
+
+      <div class="auth-copy">© SubTrack Pro — শুধুমাত্র অনুমোদিত ব্যবহারকারীদের জন্য</div>
+    </section>
+
+    <section class="auth-panel">
+      <div class="auth-card">
+        <div class="auth-mobile-brand">
+          <div class="brand-logo">S</div>
+          <div class="brand-name">SubTrack Pro</div>
+        </div>
+
+        <h1>স্বাগতম</h1>
+        <p class="sub">আপনার অ্যাকাউন্টে লগইন করুন</p>
+
+        <div id="formAlert" class="alert hidden" role="alert" aria-live="assertive"></div>
+
+        <form id="loginForm" novalidate autocomplete="on">
+          <div class="form-group">
+            <label class="form-label required" for="email">ইমেইল</label>
+            <input class="form-control" type="email" id="email" name="email"
+                   placeholder="example@company.com" autocomplete="username" inputmode="email" required>
+            <div class="form-error" id="emailError" role="alert"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label required" for="password">পাসওয়ার্ড</label>
+            <div class="input-wrap">
+              <input class="form-control" type="password" id="password" name="password"
+                     placeholder="আপনার পাসওয়ার্ড" autocomplete="current-password" required>
+              <button type="button" class="input-toggle" id="togglePassword" aria-label="পাসওয়ার্ড দেখান">দেখান</button>
+            </div>
+            <div class="form-error" id="passwordError" role="alert"></div>
+          </div>
+
+          <button type="submit" class="btn btn-block" id="submitBtn">
+            <span class="spinner hidden" id="submitSpinner"></span>
+            <span id="submitText">লগইন করুন</span>
+          </button>
+        </form>
+
+        <p class="auth-note">নতুন অ্যাকাউন্টের জন্য অ্যাডমিনের সাথে যোগাযোগ করুন।</p>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>নতুন কাস্টমার | SubTrack Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/receipt.css">
+</head>
+<body>
+  <div id="pageLoader" class="page-loader" role="status" aria-live="polite">
+    <span class="spinner spinner-dark spinner-lg"></span>
+    <span>অপেক্ষা করুন...</span>
+  </div>
+
+  <div id="app" class="app"></div>
+
+  <template id="pageTemplate">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">নতুন কাস্টমার এন্ট্রি</h1>
+        <p class="page-sub">এন্ট্রির পর কাস্টমার "অপেক্ষমান" থাকবে। অ্যাডমিন অনুমোদন করলে রিসিট তৈরি করা যাবে।</p>
+      </div>
+      <a class="btn btn-secondary" href="staff-customers.html">আমার কাস্টমার</a>
+    </div>
+
+    <div id="pageAlert" class="alert hidden mb-2" role="alert"></div>
+
+    <section class="card">
+      <div class="card-header"><h2 class="card-title">কাস্টমারের তথ্য</h2></div>
+      <div class="card-body">
+        <form id="customerForm" novalidate autocomplete="off">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label required" for="customerId">কাস্টমার আইডি</label>
+              <input class="form-control" id="customerId" type="text" maxlength="30" placeholder="যেমন: C-1001">
+              <div class="form-hint">ইংরেজি অক্ষর, সংখ্যা, - ও _ (সর্বোচ্চ ৩০)। পরে বদলানো যাবে না।</div>
+              <div class="form-error" id="customerIdError" role="alert"></div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label required" for="name">নাম</label>
+              <input class="form-control" id="name" type="text" maxlength="100" placeholder="কাস্টমারের পূর্ণ নাম">
+              <div class="form-error" id="nameError" role="alert"></div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label required" for="mobile">মোবাইল নম্বর</label>
+              <input class="form-control" id="mobile" type="tel" inputmode="numeric" maxlength="11" placeholder="01XXXXXXXXX">
+              <div class="form-error" id="mobileError" role="alert"></div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label required" for="planId">প্ল্যান</label>
+              <select class="form-control" id="planId"></select>
+              <div class="form-hint" id="planHint"></div>
+              <div class="form-error" id="planIdError" role="alert"></div>
+            </div>
+
+            <div class="form-group full">
+              <label class="form-label required" for="address">ঠিকানা</label>
+              <textarea class="form-control" id="address" maxlength="300" rows="3" placeholder="সম্পূর্ণ ঠিকানা"></textarea>
+              <div class="form-error" id="addressError" role="alert"></div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="nid">NID নম্বর (ঐচ্ছিক)</label>
+              <input class="form-control" id="nid" type="text" inputmode="numeric" maxlength="17" placeholder="১০, ১৩ বা ১৭ ডিজিট">
+              <div class="form-error" id="nidError" role="alert"></div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="birthDate">জন্ম তারিখ (ঐচ্ছিক)</label>
+              <input class="form-control" id="birthDate" type="date" min="1900-01-01">
+              <div class="form-error" id="birthDateError" role="alert"></div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="reset" class="btn btn-secondary" id="resetBtn">মুছে ফেলুন</button>
+            <button type="submit" class="btn" id="submitBtn">কাস্টমার সংরক্ষণ করুন</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </template>
+
+  <script type="module" src="js/staff-customer-new.js"></script>
+</body>
+</html>

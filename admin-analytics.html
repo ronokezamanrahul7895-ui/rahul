@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>অ্যানালিটিক্স | SubTrack Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/receipt.css">
+  <link rel="stylesheet" href="css/analytics.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div id="pageLoader" class="page-loader" role="status" aria-live="polite">
+    <span class="spinner spinner-dark spinner-lg"></span>
+    <span>অপেক্ষা করুন...</span>
+  </div>
+
+  <div id="app" class="app"></div>
+
+  <template id="pageTemplate">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">অ্যানালিটিক্স</h1>
+        <p class="page-sub">আয়, বকেয়া, খরচ ও লাভ-ক্ষতির সারসংক্ষেপ</p>
+      </div>
+      <div class="flex items-center gap-1 wrap">
+        <button type="button" class="btn btn-secondary" id="csvSummaryBtn" disabled>⬇ সারসংক্ষেপ CSV</button>
+        <button type="button" class="btn btn-secondary" id="csvDetailBtn" disabled>⬇ রিসিট CSV</button>
+      </div>
+    </div>
+
+    <section class="card mb-2">
+      <div class="toolbar">
+        <label class="form-label" for="fromMonth">শুরু</label>
+        <input type="month" id="fromMonth" class="form-control month-input">
+        <label class="form-label" for="toMonth">শেষ</label>
+        <input type="month" id="toMonth" class="form-control month-input">
+        <button type="button" class="btn" id="applyBtn">দেখান</button>
+        <div class="range-presets">
+          <button type="button" class="btn btn-ghost btn-sm" data-range="3">৩ মাস</button>
+          <button type="button" class="btn btn-ghost btn-sm" data-range="6">৬ মাস</button>
+          <button type="button" class="btn btn-ghost btn-sm" data-range="12">১২ মাস</button>
+        </div>
+      </div>
+      <div id="rangeError" class="form-error range-error" role="alert"></div>
+    </section>
+
+    <div id="statusArea" aria-live="polite"></div>
+
+    <div id="dashboard" class="hidden">
+      <section class="stats-grid" aria-label="সারসংক্ষেপ">
+        <div class="stat-card">
+          <div class="stat-label">মোট বিল</div>
+          <div class="stat-value" id="kBilled">—</div>
+          <div class="stat-note" id="kCount"></div>
+        </div>
+        <div class="stat-card success">
+          <div class="stat-label">আয় (আদায়)</div>
+          <div class="stat-value" id="kPaid">—</div>
+          <div class="stat-note" id="kRate"></div>
+        </div>
+        <div class="stat-card warning">
+          <div class="stat-label">বকেয়া</div>
+          <div class="stat-value" id="kDue">—</div>
+        </div>
+        <div class="stat-card danger">
+          <div class="stat-label">খরচ</div>
+          <div class="stat-value" id="kExpense">—</div>
+        </div>
+        <div class="stat-card" id="kProfitCard">
+          <div class="stat-label" id="kProfitLabel">নেট লাভ</div>
+          <div class="stat-value" id="kProfit">—</div>
+          <div class="stat-note">আয় − খরচ</div>
+        </div>
+      </section>
+
+      <section class="grid grid-2 mb-2">
+        <div class="card">
+          <div class="card-header"><h2 class="card-title">মাসভিত্তিক আয় বনাম খরচ</h2></div>
+          <div class="card-body"><div class="chart-box"><canvas id="chartMonthly" aria-label="মাসভিত্তিক আয় ও খরচের চার্ট" role="img"></canvas></div></div>
+        </div>
+        <div class="card">
+          <div class="card-header"><h2 class="card-title">মাসভিত্তিক বিল বনাম আদায়</h2></div>
+          <div class="card-body"><div class="chart-box"><canvas id="chartCollection" aria-label="বিল ও আদায়ের চার্ট" role="img"></canvas></div></div>
+        </div>
+      </section>
+
+      <section class="grid grid-3 mb-2">
+        <div class="card">
+          <div class="card-header"><h2 class="card-title">প্ল্যানভিত্তিক আয়</h2></div>
+          <div class="card-body"><div class="chart-box chart-sm"><canvas id="chartPlans" aria-label="প্ল্যানভিত্তিক আয়" role="img"></canvas></div></div>
+        </div>
+        <div class="card">
+          <div class="card-header"><h2 class="card-title">খরচের খাত</h2></div>
+          <div class="card-body"><div class="chart-box chart-sm"><canvas id="chartExpenses" aria-label="খাতভিত্তিক খরচ" role="img"></canvas></div></div>
+        </div>
+        <div class="card">
+          <div class="card-header"><h2 class="card-title">রিসিট স্ট্যাটাস</h2></div>
+          <div class="card-body"><div class="chart-box chart-sm"><canvas id="chartStatus" aria-label="রিসিট স্ট্যাটাস" role="img"></canvas></div></div>
+        </div>
+      </section>
+
+      <section class="grid grid-2">
+        <div class="card">
+          <div class="card-header"><h2 class="card-title">মাসিক সারসংক্ষেপ</h2></div>
+          <div id="monthlyTable"></div>
+        </div>
+        <div class="card">
+          <div class="card-header"><h2 class="card-title">সর্বোচ্চ বকেয়া কাস্টমার</h2></div>
+          <div id="dueTable"></div>
+        </div>
+      </section>
+    </div>
+  </template>
+
+  <script type="module" src="js/admin-analytics.js"></script>
+</body>
+</html>

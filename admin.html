@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>অ্যাডমিন ড্যাশবোর্ড | SubTrack Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/receipt.css">
+  <link rel="stylesheet" href="css/analytics.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div id="pageLoader" class="page-loader" role="status" aria-live="polite">
+    <span class="spinner spinner-dark spinner-lg"></span>
+    <span>অপেক্ষা করুন...</span>
+  </div>
+
+  <div id="app" class="app"></div>
+
+  <template id="pageTemplate">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title" id="welcomeTitle">ড্যাশবোর্ড</h1>
+        <p class="page-sub" id="periodLabel"></p>
+      </div>
+      <div class="flex items-center gap-1 wrap">
+        <button type="button" class="btn btn-secondary" id="refreshBtn">↻ রিফ্রেশ</button>
+        <a class="btn" href="admin-approvals.html">অনুমোদন পেজ</a>
+      </div>
+    </div>
+
+    <div id="statusArea" aria-live="polite"></div>
+
+    <div id="dashboard" class="hidden">
+      <div id="pendingAlert" class="alert alert-warning mb-2 hidden" role="status"></div>
+
+      <h2 class="receipt-section-title">এই মাসের আর্থিক অবস্থা</h2>
+      <section class="stats-grid" aria-label="মাসিক সারসংক্ষেপ">
+        <div class="stat-card">
+          <div class="stat-label">মোট বিল</div>
+          <div class="stat-value" id="mBilled">—</div>
+          <div class="stat-note" id="mCount"></div>
+        </div>
+        <div class="stat-card success">
+          <div class="stat-label">আয় (আদায়)</div>
+          <div class="stat-value" id="mPaid">—</div>
+          <div class="stat-note" id="mRate"></div>
+        </div>
+        <div class="stat-card warning">
+          <div class="stat-label">এই মাসের বকেয়া</div>
+          <div class="stat-value" id="mDue">—</div>
+        </div>
+        <div class="stat-card danger">
+          <div class="stat-label">খরচ</div>
+          <div class="stat-value" id="mExpense">—</div>
+        </div>
+        <div class="stat-card" id="mProfitCard">
+          <div class="stat-label" id="mProfitLabel">নেট লাভ</div>
+          <div class="stat-value" id="mProfit">—</div>
+          <div class="stat-note">আয় − খরচ</div>
+        </div>
+      </section>
+
+      <h2 class="receipt-section-title">কাস্টমার ও সিস্টেম</h2>
+      <section class="stats-grid" aria-label="কাস্টমার সারসংক্ষেপ">
+        <div class="stat-card warning">
+          <div class="stat-label">অনুমোদনের অপেক্ষায়</div>
+          <div class="stat-value" id="cPending">—</div>
+        </div>
+        <div class="stat-card success">
+          <div class="stat-label">অনুমোদিত কাস্টমার</div>
+          <div class="stat-value" id="cApproved">—</div>
+        </div>
+        <div class="stat-card danger">
+          <div class="stat-label">সর্বমোট বকেয়া</div>
+          <div class="stat-value" id="totalDue">—</div>
+          <div class="stat-note" id="totalDueNote"></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">সক্রিয় প্ল্যান</div>
+          <div class="stat-value" id="pActive">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">সক্রিয় ইউজার</div>
+          <div class="stat-value" id="uActive">—</div>
+        </div>
+      </section>
+
+      <section class="card mb-2">
+        <div class="card-header">
+          <h2 class="card-title">গত ৬ মাসের আয় বনাম খরচ</h2>
+          <a href="admin-analytics.html">বিস্তারিত অ্যানালিটিক্স →</a>
+        </div>
+        <div class="card-body">
+          <div class="chart-box">
+            <canvas id="chartTrend" role="img" aria-label="গত ৬ মাসের আয় ও খরচের চার্ট"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid grid-2">
+        <div class="card">
+          <div class="card-header"><h2 class="card-title">সাম্প্রতিক অপেক্ষমান কাস্টমার</h2></div>
+          <div id="pendingList"></div>
+          <div class="card-footer"><a href="admin-approvals.html">সব দেখুন ও অনুমোদন করুন →</a></div>
+        </div>
+        <div class="card">
+          <div class="card-header"><h2 class="card-title">সর্বোচ্চ বকেয়া কাস্টমার</h2></div>
+          <div id="dueList"></div>
+          <div class="card-footer"><a href="admin-receipts.html">সব রিসিট দেখুন →</a></div>
+        </div>
+      </section>
+    </div>
+  </template>
+
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>

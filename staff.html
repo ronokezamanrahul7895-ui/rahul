@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>স্টাফ ড্যাশবোর্ড | SubTrack Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/receipt.css">
+</head>
+<body>
+  <div id="pageLoader" class="page-loader" role="status" aria-live="polite">
+    <span class="spinner spinner-dark spinner-lg"></span>
+    <span>অপেক্ষা করুন...</span>
+  </div>
+
+  <div id="app" class="app"></div>
+
+  <template id="pageTemplate">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title" id="welcomeTitle">স্বাগতম</h1>
+        <p class="page-sub" id="periodLabel"></p>
+      </div>
+      <div class="flex items-center gap-1 wrap">
+        <button type="button" class="btn btn-secondary" id="refreshBtn">↻ রিফ্রেশ</button>
+        <a class="btn" href="staff-customer-new.html">+ নতুন কাস্টমার</a>
+      </div>
+    </div>
+
+    <div id="statusArea" aria-live="polite"></div>
+
+    <div id="dashboard" class="hidden">
+      <h2 class="receipt-section-title">কাস্টমার</h2>
+      <section class="stats-grid" aria-label="কাস্টমার সারসংক্ষেপ">
+        <div class="stat-card">
+          <div class="stat-label">মোট কাস্টমার</div>
+          <div class="stat-value" id="cTotal">—</div>
+        </div>
+        <div class="stat-card warning">
+          <div class="stat-label">অনুমোদনের অপেক্ষায়</div>
+          <div class="stat-value" id="cPending">—</div>
+        </div>
+        <div class="stat-card success">
+          <div class="stat-label">অনুমোদিত</div>
+          <div class="stat-value" id="cApproved">—</div>
+        </div>
+        <div class="stat-card danger">
+          <div class="stat-label">বাতিল</div>
+          <div class="stat-value" id="cRejected">—</div>
+        </div>
+      </section>
+
+      <h2 class="receipt-section-title">এই মাসের বিলিং</h2>
+      <section class="stats-grid" aria-label="মাসিক বিলিং">
+        <div class="stat-card">
+          <div class="stat-label">মোট বিল</div>
+          <div class="stat-value" id="mBilled">—</div>
+          <div class="stat-note" id="mCount"></div>
+        </div>
+        <div class="stat-card success">
+          <div class="stat-label">আদায়</div>
+          <div class="stat-value" id="mPaid">—</div>
+          <div class="stat-note" id="mRate"></div>
+        </div>
+        <div class="stat-card danger">
+          <div class="stat-label">এই মাসের বকেয়া</div>
+          <div class="stat-value" id="mDue">—</div>
+        </div>
+        <div class="stat-card warning">
+          <div class="stat-label">রিসিট বাকি</div>
+          <div class="stat-value" id="mMissing">—</div>
+          <div class="stat-note">অনুমোদিত, কিন্তু এই মাসের রিসিট নেই</div>
+        </div>
+      </section>
+
+      <section class="grid grid-2">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">সর্বমোট বকেয়া</h2>
+            <span class="text-loss" id="totalDue"></span>
+          </div>
+          <div id="dueList"></div>
+          <div class="card-footer"><a href="staff-receipts.html">সব রিসিট দেখুন →</a></div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><h2 class="card-title">রিসিট তৈরি বাকি (এই মাস)</h2></div>
+          <div id="missingList"></div>
+          <div class="card-footer"><a href="staff-receipts.html">রিসিট পেজে যান →</a></div>
+        </div>
+      </section>
+    </div>
+  </template>
+
+  <script type="module" src="js/staff.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>প্ল্যান ম্যানেজমেন্ট | SubTrack Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <div id="pageLoader" class="page-loader" role="status" aria-live="polite">
+    <span class="spinner spinner-dark spinner-lg"></span>
+    <span>অপেক্ষা করুন...</span>
+  </div>
+
+  <div id="app" class="app"></div>
+
+  <template id="pageTemplate">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">প্ল্যান ম্যানেজমেন্ট</h1>
+        <p class="page-sub">সাবক্রিপশন প্ল্যান তৈরি, সম্পাদনা ও নিয়ন্ত্রণ করুন</p>
+      </div>
+      <button type="button" class="btn" id="addPlanBtn">+ নতুন প্ল্যান</button>
+    </div>
+
+    <section class="stats-grid" aria-label="সারসংক্ষেপ">
+      <div class="stat-card">
+        <div class="stat-label">মোট প্ল্যান</div>
+        <div class="stat-value" id="statTotal">—</div>
+      </div>
+      <div class="stat-card success">
+        <div class="stat-label">সক্রিয় প্ল্যান</div>
+        <div class="stat-value" id="statActive">—</div>
+      </div>
+      <div class="stat-card warning">
+        <div class="stat-label">প্ল্যানভুক্ত কাস্টমার</div>
+        <div class="stat-value" id="statCustomers">—</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-header">
+        <h2 class="card-title">সব প্ল্যান</h2>
+        <input type="search" id="searchInput" class="form-control search-box"
+               placeholder="প্ল্যানের নাম খুঁজুন" aria-label="প্ল্যান খুঁজুন" autocomplete="off">
+      </div>
+      <div id="listArea" aria-live="polite"></div>
+    </section>
+  </template>
+
+  <script type="module" src="js/admin-plans.js"></script>
+</body>
+</html>

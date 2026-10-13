@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>ইউজার ম্যানেজমেন্ট | SubTrack Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/receipt.css">
+</head>
+<body>
+  <div id="pageLoader" class="page-loader" role="status" aria-live="polite">
+    <span class="spinner spinner-dark spinner-lg"></span>
+    <span>অপেক্ষা করুন...</span>
+  </div>
+
+  <div id="app" class="app"></div>
+
+  <template id="pageTemplate">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">ইউজার ম্যানেজমেন্ট</h1>
+        <p class="page-sub">স্টাফ ও অ্যাডমিন অ্যাকাউন্ট তৈরি, সম্পাদনা ও নিয়ন্ত্রণ করুন</p>
+      </div>
+      <button type="button" class="btn" id="addUserBtn">+ নতুন ইউজার</button>
+    </div>
+
+    <section class="stats-grid" aria-label="সারসংক্ষেপ">
+      <div class="stat-card">
+        <div class="stat-label">মোট ইউজার</div>
+        <div class="stat-value" id="statTotal">—</div>
+      </div>
+      <div class="stat-card success">
+        <div class="stat-label">সক্রিয়</div>
+        <div class="stat-value" id="statActive">—</div>
+      </div>
+      <div class="stat-card warning">
+        <div class="stat-label">অ্যাডমিন</div>
+        <div class="stat-value" id="statAdmin">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">স্টাফ</div>
+        <div class="stat-value" id="statStaff">—</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-header">
+        <div class="tabs" id="roleTabs" role="tablist" aria-label="রোল ফিল্টার">
+          <button type="button" class="tab active" role="tab" aria-selected="true" data-role="all">সব</button>
+          <button type="button" class="tab" role="tab" aria-selected="false" data-role="staff">স্টাফ</button>
+          <button type="button" class="tab" role="tab" aria-selected="false" data-role="admin">অ্যাডমিন</button>
+        </div>
+        <input type="search" id="searchInput" class="form-control search-box"
+               placeholder="নাম বা ইমেইল দিয়ে খুঁজুন" aria-label="ইউজার খুঁজুন" autocomplete="off">
+      </div>
+      <div id="listArea" aria-live="polite"></div>
+    </section>
+  </template>
+
+  <script type="module" src="js/admin-users.js"></script>
+</body>
+</html>

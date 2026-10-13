@@ -1,0 +1,14 @@
+.range-presets { display: flex; gap: 4px; margin-left: auto; }
+.range-error { padding: 0 20px 12px; }
+.chart-sm { height: 260px; }
+.stat-card.profit { border-left-color: var(--success); }
+.stat-card.loss { border-left-color: var(--danger); }
+.stat-card.loss .stat-value { color: var(--danger); }
+.stat-card.profit .stat-value { color: var(--success); }
+.text-profit { color: var(--success); font-weight: 600; }
+.text-loss { color: var(--danger); font-weight: 600; }
+tfoot td { font-weight: 700; background: #F8FAFC; border-top: 2px solid var(--border-strong); }
+
+@media (max-width: 600px) {
+  .range-presets { margin-left: 0; width: 100%; }
+}

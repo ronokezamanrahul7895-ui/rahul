@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>সব কাস্টমার | SubTrack Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/receipt.css">
+</head>
+<body>
+  <div id="pageLoader" class="page-loader" role="status" aria-live="polite">
+    <span class="spinner spinner-dark spinner-lg"></span>
+    <span>অপেক্ষা করুন...</span>
+  </div>
+
+  <div id="app" class="app"></div>
+
+  <template id="pageTemplate">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">সব কাস্টমার</h1>
+        <p class="page-sub">সব স্টাফের এন্ট্রি করা কাস্টমার দেখুন, এডিট করুন বা ডিলিট করুন</p>
+      </div>
+      <button type="button" class="btn btn-secondary" id="refreshBtn">↻ রিফ্রেশ</button>
+    </div>
+
+    <section class="stats-grid" aria-label="সারসংক্ষেপ">
+      <div class="stat-card">
+        <div class="stat-label">মোট কাস্টমার</div>
+        <div class="stat-value" id="statTotal">—</div>
+      </div>
+      <div class="stat-card warning">
+        <div class="stat-label">অপেক্ষমান</div>
+        <div class="stat-value" id="statPending">—</div>
+      </div>
+      <div class="stat-card success">
+        <div class="stat-label">অনুমোদিত</div>
+        <div class="stat-value" id="statApproved">—</div>
+      </div>
+      <div class="stat-card danger">
+        <div class="stat-label">বাতিল</div>
+        <div class="stat-value" id="statRejected">—</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-header">
+        <div class="tabs" id="statusTabs" role="tablist" aria-label="স্ট্যাটাস ফিল্টার">
+          <button type="button" class="tab active" role="tab" aria-selected="true" data-status="all">সব</button>
+          <button type="button" class="tab" role="tab" aria-selected="false" data-status="pending">অপেক্ষমান</button>
+          <button type="button" class="tab" role="tab" aria-selected="false" data-status="approved">অনুমোদিত</button>
+          <button type="button" class="tab" role="tab" aria-selected="false" data-status="rejected">বাতিল</button>
+        </div>
+        <input type="search" id="searchInput" class="form-control search-box"
+               placeholder="নাম, মোবাইল বা আইডি দিয়ে খুঁজুন" aria-label="কাস্টমার খুঁজুন" autocomplete="off">
+      </div>
+      <div id="listArea" aria-live="polite"></div>
+      <div id="pagination" class="pagination hidden"></div>
+    </section>
+  </template>
+
+  <script type="module" src="js/admin-customers.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+/* ==========================================================
+   SubTrack Pro - Receipts & Print
+   ========================================================== */
+.progress { width: 100%; height: 12px; accent-color: var(--primary); }
+.select-list { min-height: 170px; }
+.amount-row { display: flex; gap: 8px; align-items: center; }
+.amount-row .form-control { flex: 1; }
+.mini-table { font-size: 13px; }
+.mini-table th, .mini-table td { padding: 8px 10px; }
+.mini-box { border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
+.link-btn { text-decoration: none; }
+.link-btn:hover { text-decoration: none; }
+
+/* ---------- Print page ---------- */
+.print-page { min-height: 100vh; padding: 24px 16px 48px; background: var(--bg); }
+.print-toolbar {
+  max-width: 720px; margin: 0 auto 16px; display: flex;
+  justify-content: space-between; gap: 10px; flex-wrap: wrap;
+}
+.receipt { position: relative; }
+.receipt-company { font-size: 20px; font-weight: 800; color: var(--primary); }
+.receipt-company-sub { font-size: 13px; color: var(--muted); }
+.receipt-meta { text-align: right; }
+.receipt-title { font-size: 22px; font-weight: 800; color: var(--primary); letter-spacing: .02em; }
+.receipt-section { margin-top: 22px; }
+.receipt-section h3 {
+  font-size: 12px; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--muted); margin-bottom: 8px;
+}
+.receipt-info { display: grid; grid-template-columns: 140px 1fr; gap: 6px 14px; margin: 0; }
+.receipt-info dt { color: var(--muted); font-size: 14px; }
+.receipt-info dd { margin: 0; font-weight: 600; word-break: break-word; }
+.receipt-table th { background: #F8FAFC; }
+.receipt-summary { margin: 14px 0 0 auto; max-width: 320px; }
+.receipt-stamp {
+  position: absolute; top: 120px; right: 36px; transform: rotate(-12deg);
+  border: 3px solid var(--success); color: var(--success); padding: 2px 16px;
+  font-size: 22px; font-weight: 800; border-radius: 8px; opacity: .55; pointer-events: none;
+}
+.receipt-sign { display: flex; justify-content: space-between; gap: 24px; margin-top: 56px; }
+.receipt-sign div { flex: 1; text-align: center; border-top: 1px solid var(--text); padding-top: 6px; font-size: 13px; }
+.receipt-foot { margin-top: 24px; font-size: 12px; color: var(--muted); text-align: center; }
+
+@media (max-width: 600px) {
+  .receipt-head { flex-direction: column; }
+  .receipt-meta { text-align: left; }
+  .receipt-info { grid-template-columns: 1fr; gap: 0; }
+  .receipt-info dd { margin-bottom: 8px; }
+  .receipt-stamp { top: 8px; right: 8px; font-size: 16px; }
+}
+
+@media print {
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .print-page { padding: 0; background: #fff; min-height: 0; }
+  .receipt { border: 0; padding: 0; max-width: none; }
+}
