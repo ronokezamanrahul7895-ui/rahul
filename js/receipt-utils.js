@@ -41,3 +41,13 @@ export const receiptId = (customerId, ym) => `${customerId}_${ym}`;
 
 export const printUrl = (id, auto = false) =>
   `receipt-print.html?id=${encodeURIComponent(id)}${auto ? '&auto=1' : ''}`;
+
+/* ---------- নতুন পেজগুলোর জন্য যোগ করা হেল্পার ---------- */
+export const isValidMonth = (m) => MONTH_RE.test(String(m || ''));
+
+export function currentMonth() {
+  const d = new Date();
+  return monthKey(d.getFullYear(), d.getMonth() + 1);
+}
+
+export const makeReceiptId = (customerId, month) => `${customerId}_${month}`;
