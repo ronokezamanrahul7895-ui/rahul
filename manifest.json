@@ -1,0 +1,16 @@
+{
+  "name": "SubTrack Pro",
+  "short_name": "SubTrack",
+  "description": "সাবক্রিপশন ম্যানেজমেন্ট ড্যাশবোর্ড",
+  "lang": "bn",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F1F5F9",
+  "theme_color": "#1E40AF",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
